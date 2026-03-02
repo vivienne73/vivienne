@@ -6,7 +6,6 @@
   <meta name="color-scheme" content="light" />
   <title>Vivienne — Personal Space</title>
 
-  <!-- Fonts：高级衬线 + 干净无衬线 -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
@@ -17,24 +16,6 @@
 <body>
   <!-- 鼠标光晕 -->
   <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
-
-  <!-- v5 开场（玻璃消散） -->
-  <section class="entry" id="entry" aria-hidden="false">
-    <div class="entry__veil"></div>
-
-    <div class="entry__card glass" id="entryCard">
-      <div class="entry__hint">WELCOME TO MY ROOM</div>
-      <div class="entry__name">Vivienne</div>
-      <div class="entry__sub">a soft place — only about me</div>
-
-      <div class="entry__actions">
-        <button class="btn btn-primary" id="enterBtn" type="button">enter</button>
-        <button class="btn btn-ghost" id="musicBtn" type="button">music: off</button>
-      </div>
-
-      <div class="entry__note">（点 enter 才会播放音乐，避免浏览器拦截）</div>
-    </div>
-  </section>
 
   <!-- 顶部导航 -->
   <header class="topbar">
@@ -59,28 +40,33 @@
     </div>
   </header>
 
-  <!-- Hero -->
   <main class="wrap">
+    <!-- Hero（没有开场层，直接可点） -->
     <section class="hero">
       <div class="hero__left">
-        <h1 class="hero__title">Vivienne</h1>
-        <div class="typewrap">
+        <div class="kicker reveal">welcome to my room</div>
+
+        <h1 class="hero__title reveal">Vivienne</h1>
+
+        <div class="typewrap reveal">
           <span class="type__label">typing</span>
           <span class="type__text" id="typeText"></span><span class="type__cursor" aria-hidden="true">|</span>
         </div>
 
-        <p class="hero__desc">
+        <p class="hero__desc reveal">
           这是我的个人空间。<br>
           不用有用，不用解释。<br>
           只要它像我。
         </p >
 
-        <div class="hero__cta">
+        <div class="hero__cta reveal">
           <a class="btn btn-primary" href="#about">enter</a >
           <a class="btn btn-ghost" href="#hello">leave a note</a >
+          <a class="btn btn-ghost" href="./project-1.html">project 1</a >
+          <a class="btn btn-ghost" href="./project-2.html">project 2</a >
         </div>
 
-        <div class="hero__meta">Soft pink • glass UI • scroll reveal</div>
+        <div class="hero__meta reveal">soft pink • glass ui • scroll reveal • v4.2</div>
       </div>
 
       <div class="hero__right">
@@ -96,9 +82,8 @@
         </div>
 
         <div class="glass card heroCard reveal">
-          <div class="miniTitle">projects</div>
-          <a class="miniLink" href="./project-1.html">Project 1 →</a >
-          <a class="miniLink" href="./project-2.html">Project 2 →</a >
+          <div class="miniTitle">tiny note</div>
+          <p class="muted">我想要一个干净、轻柔、有点玻璃感的空间。</p >
         </div>
       </div>
     </section>
@@ -129,7 +114,7 @@
       </div>
     </section>
 
-    <!-- Now（3卡） -->
+    <!-- Now -->
     <section class="section" id="now">
       <div class="section__head reveal">
         <h2 class="section__title">Now</h2>
@@ -152,11 +137,11 @@
       </div>
     </section>
 
-    <!-- Photos（四格图） -->
+    <!-- Photos（四格） -->
     <section class="section" id="photos">
       <div class="section__head reveal">
         <h2 class="section__title">Photos</h2>
-        <div class="section__sub">四格小相册（把图片放到 assets/photos/）。</div>
+        <div class="section__sub">四格小相册（assets/photos/p1~p4）</div>
       </div>
 
       <div class="photo4">
@@ -167,7 +152,7 @@
       </div>
     </section>
 
-    <!-- Words -->
+    <!-- Words（瀑布流） -->
     <section class="section" id="words">
       <div class="section__head reveal">
         <h2 class="section__title">Words</h2>
@@ -192,20 +177,25 @@
           <h3 class="card__title">一个愿望</h3>
           <p class="muted">把我喜欢的感觉做成真正可用的作品。</p >
         </article>
+
+        <article class="glass card reveal">
+          <h3 class="card__title">提醒</h3>
+          <p class="muted">别急着变成别人要的样子。</p >
+        </article>
       </div>
     </section>
 
-    <!-- Hello / 留言 -->
+    <!-- Hello -->
     <section class="section" id="hello">
       <div class="section__head reveal">
         <h2 class="section__title">Hello</h2>
-        <div class="section__sub">写一条给未来的自己。</div>
+        <div class="section__sub">写一条给未来的自己（保存在本机浏览器）。</div>
       </div>
 
       <div class="glass card reveal">
         <form id="noteForm" class="note">
           <input class="input" id="noteName" placeholder="你的名字（可空）" />
-          <textarea class="textarea" id="noteText" placeholder="写点什么…（会保存在你的浏览器里）" rows="4"></textarea>
+          <textarea class="textarea" id="noteText" placeholder="写点什么…" rows="4"></textarea>
           <div class="note__row">
             <button class="btn btn-primary" type="submit">save</button>
             <button class="btn btn-ghost" id="clearNoteBtn" type="button">clear</button>
@@ -215,13 +205,10 @@
       </div>
 
       <footer class="footer">
-        <div class="muted">© <span id="year"></span> Vivienne • v5.0</div>
+        <div class="muted">© <span id="year"></span> Vivienne • v4.2</div>
       </footer>
     </section>
   </main>
-
-  <!-- 可选音乐（没有文件也不影响） -->
-  <audio id="bgm" src="./assets/bgm.mp3" preload="auto" loop></audio>
 
   <script src="./assets/app.js"></script>
 </body>
