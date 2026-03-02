@@ -1,15 +1,15 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="color-scheme" content="light dark" />
   <title>Vivienne — Personal Space</title>
 
-  <!-- Fonts（优雅衬线 + 干净无衬线） -->
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="./assets/style.css" />
 </head>
@@ -18,85 +18,63 @@
   <!-- 鼠标光晕 -->
   <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
 
-  <!-- 进入房间：门帘开场 -->
-  <div class="entry" id="entry" aria-hidden="false">
+  <!-- 进入房间：门帘 -->
+  <section class="entry" id="entry" aria-hidden="false">
     <div class="entry__veil"></div>
     <div class="entry__card glass">
       <div class="entry__hint">welcome to my room</div>
       <div class="entry__name">Vivienne</div>
       <div class="entry__sub">a soft place — only about me</div>
 
-      <button class="btn btn-primary" id="enterBtn" type="button">
-        enter
-      </button>
+      <div class="entry__row">
+        <button class="btn btn-primary" id="enterBtn" type="button">enter</button>
+        <button class="btn btn-ghost" id="musicBtn" type="button" aria-pressed="false">music: off</button>
+      </div>
 
-      <button class="btn btn-ghost" id="muteBtn" type="button" aria-pressed="false" title="Music">
-        music: off
-      </button>
-
-      <div class="entry__tiny">（点 enter 才会播放音乐，避免浏览器拦截）</div>
+      <div class="entry__note">（点 enter 才会播放音乐，避免浏览器拦截）</div>
     </div>
-  </div>
+  </section>
 
-  <!-- 顶部导航 -->
-  <header class="topbar glass" id="topbar">
+  <!-- 音乐（可换成你自己的 mp3 放到 assets/） -->
+  <audio id="bgm" preload="auto" loop>
+    <!-- 如果你没有音乐文件，就先用空，不影响网站 -->
+    <!-- <source src="./assets/bgm.mp3" type="audio/mpeg" /> -->
+  </audio>
+
+  <header class="topbar">
     <div class="brand">
-      <div class="brand__logo">V</div>
+      <div class="brand__mono">V</div>
       <div class="brand__text">
         <div class="brand__name">Vivienne</div>
         <div class="brand__tag">Korean Pink / White • personal space</div>
       </div>
     </div>
 
-    <nav class="nav" aria-label="Main">
-      <a class="nav__link" href=" ">about</a >
-      <a class="nav__link" href="#now">now</a >
-      <a class="nav__link" href="#photos">photos</a >
-      <a class="nav__link" href="#words">words</a >
-      <a class="nav__link" href="#hello">hello</a >
+    <nav class="nav">
+      <a class="nav__link" href="#about">about</a>
+      <a class="nav__link" href="#now">now</a>
+      <a class="nav__link" href="#photos">photos</a>
+      <a class="nav__link" href="#words">words</a>
+      <a class="nav__link" href="#hello">hello</a>
+      <button class="chip" id="themeBtn" type="button" aria-pressed="false">night</button>
     </nav>
-
-    <div class="actions">
-      <button class="iconbtn" id="nightBtn" type="button" aria-pressed="false" title="Night mode">
-        <span class="iconbtn__dot" aria-hidden="true"></span>
-        <span class="iconbtn__text">night</span>
-      </button>
-    </div>
   </header>
 
-  <main class="wrap" id="top">
+  <main class="wrap">
     <!-- Hero -->
-    <section class="hero">
-      <div class="hero__inner">
-        <div class="hero__kicker reveal">my quiet corner of the internet</div>
-
-        <h1 class="hero__title reveal">
-          Vivienne
-        </h1>
-
-        <!-- 打字机：固定高度，避免页面上下跳 -->
-        <div class="hero__typewrap reveal" aria-label="Typewriter">
-          <span id="typeText" class="hero__type" aria-live="polite"></span>
-          <span class="cursor" aria-hidden="true">|</span>
-        </div>
-
-        <div class="hero__card glass reveal">
-          <p>
-            这是我的个人空间。<br>
-            不用有用，不用解释。<br>
-            只要它像我。
-          </p >
-        </div>
-
-        <div class="hero__cta reveal">
-          <a class="btn btn-primary" href="#photos">enter</a >
-          <button class="btn btn-ghost" id="noteJumpBtn" type="button">leave a note</button>
-        </div>
-
-        <div class="pill glass reveal">
-          <span class="pill__dot"></span>
-          <span>Soft pink • glass UI • scroll reveal</span>
-        </div>
+    <section class="hero reveal">
+      <h1 class="hero__title">
+        <span class="typewriter" id="typewriter"></span><span class="caret" aria-hidden="true"></span>
+      </h1>
+      <p class="hero__sub">my quiet corner of the internet</p>
+      <div class="hero__cta">
+        <a class="btn btn-primary" href="#about">enter</a>
+        <a class="btn btn-ghost" href="#hello">leave a note</a>
+      </div>
+      <div class="pillrow">
+        <span class="pill">Soft pink</span>
+        <span class="pill">glass UI</span>
+        <span class="pill">scroll reveal</span>
       </div>
     </section>
 
@@ -107,36 +85,19 @@
         <div class="section__sub">不是简历，只是我。</div>
       </div>
 
-      <div class="grid-2">
-        <article class="card glass reveal">
-          <h3 class="card__title">我是谁</h3>
-          <p class="muted">
-            我喜欢柔软的配色、留白、以及不急着让人明白的东西。<br>
-            我对“被看见”有一点点贪念，但也想慢慢学会不靠解释。<br>
-            我在这里保存我自己。
-          </p >
-          <ul class="list">
-            <li>我喜欢：粉白、雾感、安静、轻微闪光</li>
-            <li>我讨厌：吵闹、边界、情绪节奏被抢走</li>
-            <li>我相信：美是一种对世界的态度</li>
-          </ul>
-        </article>
+      <article class="card glass reveal">
+        <h3 class="card__title">我是谁</h3>
+        <p class="muted">
+          我喜欢柔软的配色、留白，以及不急着让人明白的东西。<br />
+          我在这里保存我自己。
+        </p>
+      </article>
 
-        <article class="card glass reveal">
-          <h3 class="card__title">我的调色盘</h3>
-          <div class="palette">
-            <div class="sw sw1" title="soft pink"></div>
-            <div class="sw sw2" title="airy white"></div>
-            <div class="sw sw3" title="gentle lavender"></div>
-            <div class="sw sw4" title="warm gray"></div>
-          </div>
-          <div class="muted tiny">soft pink • airy white • gentle lavender • warm gray</div>
-          <div class="quote">
-            <div class="quote__label">a note</div>
-            <div class="quote__text">“我会把世界装在自己手里。”</div>
-          </div>
-        </article>
-      </div>
+      <article class="quote glass reveal">
+        <div class="quote__mark">“</div>
+        <div class="quote__text">我会把世界装在自己手里。</div>
+        <div class="quote__mark quote__mark--end">”</div>
+      </article>
     </section>
 
     <!-- Now -->
@@ -149,15 +110,17 @@
       <div class="grid-3">
         <article class="card glass reveal">
           <h3 class="card__title">今天</h3>
-          <p class="muted">我在练习把情绪放轻一点，把边界放清一点。</p >
+          <p class="muted">我在练习把情绪放轻一点，把边界放清一点。</p>
         </article>
+
         <article class="card glass reveal">
           <h3 class="card__title">喜欢</h3>
-          <p class="muted">低饱和粉白、奶油感、安静的灯光、慢一点的心跳。</p >
+          <p class="muted">低饱和粉白、奶油感、安静的灯光、慢一点的心跳。</p>
         </article>
+
         <article class="card glass reveal">
           <h3 class="card__title">想要</h3>
-          <p class="muted">一个不用表演的空间，和持续变好的自己。</p >
+          <p class="muted">一个不用表演的空间，和持续变好的自己。</p>
         </article>
       </div>
     </section>
@@ -169,23 +132,20 @@
         <div class="section__sub">拼贴（喜欢就点开放大）。</div>
       </div>
 
-      <div class="photo-grid reveal">
-        <!-- 四格不同图片：把你的图片替换成同名文件即可 -->
-        <button class="ph" type="button" data-zoom="./assets/p1-cover.jpg" aria-label="Open photo 1">
-          <img class="ph__img" src="./assets/p1-cover.jpg" alt="photo 1" loading="lazy">
-        </button>
-
-        <button class="ph" type="button" data-zoom="./assets/p2-cover.jpg" aria-label="Open photo 2">
-          <img class="ph__img" src="./assets/p2-cover.jpg" alt="photo 2" loading="lazy">
-        </button>
-
-        <button class="ph" type="button" data-zoom="./assets/photo3.jpg" aria-label="Open photo 3">
-          <img class="ph__img" src="./assets/photo3.jpg" alt="photo 3" loading="lazy">
-        </button>
-
-        <button class="ph" type="button" data-zoom="./assets/photo4.jpg" aria-label="Open photo 4">
-          <img class="ph__img" src="./assets/photo4.jpg" alt="photo 4" loading="lazy">
-        </button>
+      <div class="grid-2 photos">
+        <!-- 你可以把 src 换成你自己的图片链接或 assets 图片 -->
+        <a class="photo glass reveal" href="https://images.unsplash.com/photo-1520975916090-3105956dac38?auto=format&fit=crop&w=1400&q=80" target="_blank" rel="noreferrer">
+          <img src="https://images.unsplash.com/photo-1520975916090-3105956dac38?auto=format&fit=crop&w=1400&q=80" alt="photo 1">
+        </a>
+        <a class="photo glass reveal" href="https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?auto=format&fit=crop&w=1400&q=80" target="_blank" rel="noreferrer">
+          <img src="https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?auto=format&fit=crop&w=1400&q=80" alt="photo 2">
+        </a>
+        <a class="photo glass reveal" href="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1400&q=80" target="_blank" rel="noreferrer">
+          <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1400&q=80" alt="photo 3">
+        </a>
+        <a class="photo glass reveal" href="https://images.unsplash.com/photo-1496307653780-42ee777d4833?auto=format&fit=crop&w=1400&q=80" target="_blank" rel="noreferrer">
+          <img src="https://images.unsplash.com/photo-1496307653780-42ee777d4833?auto=format&fit=crop&w=1400&q=80" alt="photo 4">
+        </a>
       </div>
     </section>
 
@@ -197,60 +157,35 @@
       </div>
 
       <article class="card glass reveal">
-        <div class="words">
-          <div class="words__title">We are</div>
-          <div class="words__text">
-            我们是柔软的，慢慢长大的，不会被定义的。
-          </div>
-        </div>
+        <h3 class="card__title">We are</h3>
+        <p class="muted">我们是柔软的，慢慢长大的，不会被定义的。</p>
       </article>
     </section>
 
-    <!-- Hello / Note -->
+    <!-- Hello -->
     <section class="section" id="hello">
       <div class="section__head reveal">
         <h2 class="section__title">Hello</h2>
-        <div class="section__sub">留一句话给我（只在本机保存，不上传）。</div>
+        <div class="section__sub">留一张小纸条（只在本机保存）。</div>
       </div>
 
-      <div class="grid-2">
-        <article class="card glass reveal">
-          <h3 class="card__title">leave a note</h3>
-          <textarea id="noteInput" class="note" rows="5" placeholder="写点什么…"></textarea>
-          <div class="row">
-            <button class="btn btn-primary" id="saveNoteBtn" type="button">save</button>
-            <button class="btn btn-ghost" id="clearNoteBtn" type="button">clear</button>
-            <div class="tiny muted" id="saveHint">自动保存在浏览器（localStorage）</div>
-          </div>
-        </article>
-
-        <article class="card glass reveal">
-          <h3 class="card__title">my room rules</h3>
-          <ul class="list">
-            <li>我允许自己慢一点。</li>
-            <li>我不为任何人解释我的审美。</li>
-            <li>我只把喜欢的东西摆进房间里。</li>
-          </ul>
-          <div class="divider"></div>
-          <div class="tiny muted">v4.2 • sweet Korean pink/white • glow cursor • night mode • music</div>
-        </article>
+      <div class="note glass reveal">
+        <input class="note__input" id="noteInput" placeholder="想对 Vivienne 说…（例如：今晚要温柔一点）" />
+        <button class="btn btn-primary" id="saveNoteBtn" type="button">save</button>
       </div>
 
-      <footer class="footer reveal">
-        <div>© <span id="year"></span> Vivienne. All rights reserved.</div>
-      </footer>
+      <div class="noteOut muted reveal" id="noteOut"></div>
     </section>
+
+    <footer class="footer muted">
+      <span>© <span id="year"></span> Vivienne • built with soft pink</span>
+      <span class="dot">·</span>
+      <a class="muted" href="./project-1.html">project 1</a>
+      <span class="dot">·</span>
+      <a class="muted" href="./project-2.html">project 2</a>
+    </footer>
   </main>
 
-  <!-- Lightbox（图片放大） -->
-  <div class="lightbox" id="lightbox" aria-hidden="true">
-    <button class="lb-close" id="lbClose" aria-label="Close">×</button>
-    < img class="lb-img" id="lbImg" alt="Zoomed image" />
-  </div>
-
-  <!-- 背景音乐（点击 enter 后才播放） -->
-  <audio id="bgm" src="./assets/bgm.mp3" preload="auto" loop></audio>
-
-  <script src="./assets/app.js"></script>
+  <script src="./assets/main.js"></script>
 </body>
 </html>
