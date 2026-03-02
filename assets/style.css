@@ -2,13 +2,10 @@
   --bg1: #ffeaf2;
   --bg2: #eef5ff;
   --paper: rgba(255,255,255,.62);
-  --paper2: rgba(255,255,255,.40);
   --line: rgba(255,255,255,.55);
   --shadow: rgba(20, 20, 30, .08);
   --text: #1a1a22;
   --muted: rgba(26,26,34,.64);
-  --accent: #ffb7cf;
-  --accent2: #b7d8ff;
   --radius: 22px;
 }
 
@@ -19,9 +16,9 @@ body{
   font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "PingFang SC", "Microsoft Yahei", sans-serif;
   color: var(--text);
   background:
-    radial-gradient(900px 700px at 30% 20%, rgba(255, 210, 226, .75), transparent 60%),
-    radial-gradient(1100px 800px at 75% 35%, rgba(200, 225, 255, .75), transparent 60%),
-    linear-gradient(180deg, rgba(255,255,255,.72), rgba(255,255,255,.62));
+    radial-gradient(900px 700px at 28% 20%, rgba(255, 210, 226, .80), transparent 60%),
+    radial-gradient(1100px 800px at 78% 35%, rgba(200, 225, 255, .80), transparent 60%),
+    linear-gradient(180deg, rgba(255,255,255,.76), rgba(255,255,255,.66));
   overflow-x:hidden;
 }
 
@@ -29,8 +26,8 @@ body.night{
   --text:#f6f6fb;
   --muted: rgba(246,246,251,.62);
   background:
-    radial-gradient(900px 700px at 30% 20%, rgba(255, 182, 214, .22), transparent 60%),
-    radial-gradient(1100px 800px at 75% 35%, rgba(160, 200, 255, .20), transparent 60%),
+    radial-gradient(900px 700px at 28% 20%, rgba(255, 182, 214, .22), transparent 60%),
+    radial-gradient(1100px 800px at 78% 35%, rgba(160, 200, 255, .18), transparent 60%),
     linear-gradient(180deg, rgba(18,18,24,.92), rgba(10,10,14,.92));
 }
 
@@ -53,12 +50,6 @@ img{ display:block; width:100%; height:100%; object-fit: cover; }
 }
 
 .muted{ color: var(--muted); line-height: 1.7; }
-.pill{
-  display:inline-flex; padding: 6px 10px; border-radius: 999px;
-  background: rgba(255,255,255,.55);
-  border: 1px solid rgba(255,255,255,.55);
-  font-size: 12px;
-}
 
 .btn{
   border: 1px solid rgba(255,255,255,.55);
@@ -77,9 +68,7 @@ img{ display:block; width:100%; height:100%; object-fit: cover; }
   background: linear-gradient(135deg, rgba(255,183,207,.75), rgba(183,216,255,.70));
   border-color: rgba(255,255,255,.70);
 }
-.btn-ghost{
-  background: rgba(255,255,255,.35);
-}
+.btn-ghost{ background: rgba(255,255,255,.35); }
 
 .chip{
   border: 1px solid rgba(255,255,255,.55);
@@ -87,6 +76,13 @@ img{ display:block; width:100%; height:100%; object-fit: cover; }
   border-radius: 999px;
   padding: 8px 12px;
   cursor:pointer;
+}
+
+.pill{
+  display:inline-flex; padding: 6px 10px; border-radius: 999px;
+  background: rgba(255,255,255,.55);
+  border: 1px solid rgba(255,255,255,.55);
+  font-size: 12px;
 }
 
 /* 顶栏 */
@@ -135,9 +131,20 @@ img{ display:block; width:100%; height:100%; object-fit: cover; }
   gap: 18px;
   align-items:start;
 }
+.kicker{
+  display:inline-flex;
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.55);
+  background: rgba(255,255,255,.42);
+  color: var(--muted);
+  font-size: 12px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
 .hero__title{
   font-family:"Playfair Display", serif;
-  font-size: 68px;
+  font-size: 72px;
   letter-spacing: .02em;
   margin: 18px 0 10px;
 }
@@ -163,16 +170,6 @@ img{ display:block; width:100%; height:100%; object-fit: cover; }
 .heroCard .miniBig{ font-size: 22px; margin: 8px 0 10px; }
 .miniLine{ height:1px; background: rgba(255,255,255,.55); margin: 10px 0; }
 .miniRow{ display:flex; gap: 8px; flex-wrap: wrap; }
-.miniLink{
-  display:block;
-  margin-top: 10px;
-  color: var(--muted);
-  padding: 10px 12px;
-  border-radius: 14px;
-  background: rgba(255,255,255,.35);
-  border: 1px solid rgba(255,255,255,.55);
-}
-.miniLink:hover{ color: var(--text); background: rgba(255,255,255,.50); }
 
 /* Section */
 .section{ padding-top: 44px; }
@@ -186,7 +183,6 @@ img{ display:block; width:100%; height:100%; object-fit: cover; }
 
 .grid-2{ display:grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 .grid-3{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
-
 .card__title{ margin: 0 0 8px; font-size: 16px; }
 
 /* 四格图 */
@@ -202,15 +198,9 @@ img{ display:block; width:100%; height:100%; object-fit: cover; }
   padding: 0;
 }
 
-/* Masonry（简化版瀑布感） */
-.masonry{
-  column-count: 3;
-  column-gap: 12px;
-}
-.masonry .card{
-  break-inside: avoid;
-  margin: 0 0 12px;
-}
+/* Masonry */
+.masonry{ column-count: 3; column-gap: 12px; }
+.masonry .card{ break-inside: avoid; margin: 0 0 12px; }
 
 /* 留言 */
 .note{ display:flex; flex-direction:column; gap: 10px; }
@@ -233,10 +223,7 @@ img{ display:block; width:100%; height:100%; object-fit: cover; }
   transform: translateY(12px);
   transition: opacity .6s ease, transform .6s ease;
 }
-.reveal.is-in{
-  opacity: 1;
-  transform: translateY(0px);
-}
+.reveal.is-in{ opacity: 1; transform: translateY(0px); }
 
 /* 鼠标光晕 */
 .cursor-glow{
@@ -254,7 +241,6 @@ img{ display:block; width:100%; height:100%; object-fit: cover; }
   z-index: 5;
 }
 
-/* 响应式 */
 @media (max-width: 980px){
   .hero{ grid-template-columns: 1fr; }
   .photo4{ grid-template-columns: repeat(2, 1fr); }
@@ -263,97 +249,3 @@ img{ display:block; width:100%; height:100%; object-fit: cover; }
   .masonry{ column-count: 1; }
   .hero__title{ font-size: 56px; }
 }
-
-/* =========================
-   v5 | Blur Glass Dissolve
-   ========================= */
-
-.entry{
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  display: grid;
-  place-items: center;
-  overflow: hidden;
-  pointer-events: auto;
-}
-
-.entry__veil{
-  position: absolute;
-  inset: -40px;
-  background:
-    radial-gradient(700px 500px at 30% 40%, rgba(255, 210, 226, .55), transparent 60%),
-    radial-gradient(800px 600px at 70% 55%, rgba(210, 230, 255, .55), transparent 60%),
-    linear-gradient(180deg, rgba(255,255,255,.75), rgba(255,255,255,.65));
-  filter: blur(16px);
-  transform: scale(1.05);
-  opacity: 1;
-  transition: opacity .55s ease, filter .55s ease, transform .55s ease;
-}
-
-.entry__card.glass{
-  width: min(560px, calc(100vw - 44px));
-  padding: 28px 26px 22px;
-  border-radius: 22px;
-  background: rgba(255,255,255,.46);
-  border: 1px solid rgba(255,255,255,.55);
-  box-shadow: 0 18px 60px rgba(22, 22, 30, .08), 0 1px 0 rgba(255,255,255,.35) inset;
-  backdrop-filter: blur(18px) saturate(1.15);
-  -webkit-backdrop-filter: blur(18px) saturate(1.15);
-  transform: translateY(6px) scale(1);
-  opacity: 1;
-  transition: opacity .45s ease;
-  text-align:center;
-}
-
-.entry__hint{ letter-spacing: .22em; opacity: .65; font-size: 12px; }
-.entry__name{
-  font-family:"Playfair Display", serif;
-  font-size: 64px;
-  line-height: 1.05;
-  margin: 10px 0 6px;
-}
-.entry__sub{ opacity:.70; margin-bottom: 10px; }
-.entry__actions{ display:flex; gap: 12px; justify-content:center; margin: 14px 0 10px; flex-wrap:wrap; }
-.entry__note{ opacity:.55; font-size: 12px; }
-
-.entry.is-leaving{ pointer-events: none; }
-
-.entry.is-leaving .entry__veil{
-  opacity: 0;
-  filter: blur(28px);
-  transform: scale(1.10);
-}
-
-.entry.is-leaving .entry__card{
-  animation: glassDissolve .78s cubic-bezier(.2,.8,.2,1) forwards;
-}
-
-@keyframes glassDissolve{
-  0%{
-    opacity: 1;
-    transform: translateY(6px) scale(1);
-    filter: blur(0px);
-    clip-path: inset(0% round 22px);
-  }
-  35%{
-    opacity: .92;
-    transform: translateY(0px) scale(1.02);
-    filter: blur(1.5px);
-    clip-path: inset(0% round 22px);
-  }
-  70%{
-    opacity: .25;
-    transform: translateY(-10px) scale(1.06);
-    filter: blur(7px);
-    clip-path: inset(8% 10% 12% 10% round 26px);
-  }
-  100%{
-    opacity: 0;
-    transform: translateY(-18px) scale(1.10);
-    filter: blur(14px);
-    clip-path: inset(20% 22% 26% 22% round 32px);
-  }
-}
-
-.entry.is-gone{ display:none; }
