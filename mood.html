@@ -1,34 +1,26 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<title>Mood</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Story — Vivienne</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-<div class="container">
-<div class="card">
+  <div class="halo" aria-hidden="true"></div>
 
-<h1>Mood Log</h1>
+  <main class="wrap">
+    <section class="card">
+      <h1 class="pageTitle">Story</h1>
+      <p class="pageText">
+        这里写你的故事。可以用短句、分段，但不要太乱。<br/>
+        例：我喜欢把情绪写得很轻，像一层雾。
+      </p >
 
-<textarea id="mood" style="width:100%;height:100px;"></textarea>
-<button onclick="save()">Save</button>
+      <a class="backBtn" href=" ">← Back</a >
+    </section>
+  </main>
 
-<ul id="list"></ul>
-<a href=" " onclick="if(history.length>1){history.back(); return false;}">← Back</a >
-
-
-</div>
-</div>
-
-<script>
-function save(){
-  let text=document.getElementById("mood").value;
-  let li=document.createElement("li");
-  li.innerText=text;
-  document.getElementById("list").appendChild(li);
-}
-</script>
-
+  <script src="app.js"></script>
 </body>
 </html>
