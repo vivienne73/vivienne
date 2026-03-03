@@ -1,16 +1,19 @@
-const text = "soft pink personal space";
-let i = 0;
-function typing(){
-  if(i < text.length){
-    document.getElementById("typing").innerHTML += text.charAt(i);
-    i++;
-    setTimeout(typing,50);
-  }
-}
-typing();
-
-document.addEventListener("mousemove",function(e){
-  const halo=document.querySelector(".halo");
-  halo.style.left=e.clientX-150+"px";
-  halo.style.top=e.clientY-150+"px";
+// 鼠标光晕
+const halo = document.querySelector(".halo");
+window.addEventListener("mousemove", (e) => {
+  halo.style.left = e.clientX + "px";
+  halo.style.top = e.clientY + "px";
 });
+
+// 打字机
+const el = document.getElementById("type");
+if (el) {
+  const text = el.getAttribute("data-text") || "";
+  let i = 0;
+  el.textContent = "";
+  const timer = setInterval(() => {
+    el.textContent += text[i] || "";
+    i++;
+    if (i >= text.length) clearInterval(timer);
+  }, 55);
+}
