@@ -27,7 +27,18 @@ radial-gradient(55vw 45vw at 80% 30%, rgba(210,220,255,.35), transparent 60%),
 linear-gradient(180deg,var(--bg1),var(--bg2));
 font-family: ui-serif, Georgia, "Songti SC", serif;
 color:var(--ink);
+}/* ✅ 允许点击穿透：任何背景/光晕/装饰层都别挡按钮 */
+.cursor-glow,
+.bg,
+.overlay,
+.decor,
+.no-click {
+  pointer-events: none !important;
 }
+
+/* ✅ 强行让按钮在最上层 */
+.card { position: relative; z-index: 2; }
+.enter { position: relative; z-index: 3; cursor: pointer; }
 
 .card{
 padding:70px 80px;
